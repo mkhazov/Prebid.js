@@ -126,6 +126,7 @@ function PrebidServer() {
             }
 
             let bidObject = bidfactory.createBid(status, bidRequest);
+            bidObject.source = TYPE;
             bidObject.creative_id = bidObj.creative_id;
             bidObject.bidderCode = bidObj.bidder;
             bidObject.cpm = cpm;
@@ -149,7 +150,7 @@ function PrebidServer() {
             .bids.filter(bidRequest => !receivedBidIds.includes(bidRequest.bidId))
             .forEach(bidRequest => {
               let bidObject = bidfactory.createBid(STATUS.NO_BID, bidRequest);
-
+              bidObject.source = TYPE;
               bidObject.adUnitCode = bidRequest.placementCode;
               bidObject.bidderCode = bidRequest.bidder;
 
